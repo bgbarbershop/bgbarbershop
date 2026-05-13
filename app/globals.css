@@ -34,3 +34,13 @@ h1, h2, h3, h4 {
   font-family: var(--font-bebas), Impact, "Arial Narrow", sans-serif;
   letter-spacing: 0.05em;
 }
+
+.hero-bg {
+  background-position: 35% center;
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background-position: 25% center;
+  }
+}

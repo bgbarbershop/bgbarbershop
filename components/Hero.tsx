@@ -6,8 +6,8 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image placeholder — remplacer par une vraie photo dans /public/images/hero.jpg */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')", backgroundPosition: "25% center" }}
+        className="absolute inset-0 bg-cover bg-no-repeat hero-bg"
+        style={{ backgroundImage: "url('/images/hero.jpg')" }}
       />
 
       {/* Overlay gradient */}
@@ -37,7 +37,7 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="text-gris text-base md:text-lg max-w-md mx-auto mb-10 leading-relaxed">
-          Un résultat net. Une expérience soignée. Chaque visite.
+          Un résultat net. Une expérience soignée.
         </p>
 
         {/* CTAs */}

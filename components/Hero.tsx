@@ -21,7 +21,7 @@ export default function Hero() {
           <Image
             src="/images/logo.png"
             alt="BG Barbershop"
-            width={240}
+            width={420}
             height={240}
             priority
             className="drop-shadow-2xl"

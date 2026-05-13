@@ -6,8 +6,8 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image placeholder — remplacer par une vraie photo dans /public/images/hero.jpg */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{ backgroundImage: "url('/images/hero.jpg')", backgroundPosition: "25% center" }}
       />
 
       {/* Overlay gradient */}

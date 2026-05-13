@@ -5,23 +5,23 @@ import Footer from "@/components/Footer";
 // Toutes les photos — placer dans /public/images/
 const photos = [
   // Intérieur salon
-  { src: "/images/gallery-1.jpg", alt: "Salon BG Barbershop — vue d'ensemble", col: "col-span-2 md:col-span-2", aspect: "aspect-video" },
-  { src: "/images/gallery-9.jpg", alt: "L'équipe — deux barbiers", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-2.jpg", alt: "Coupe en cours", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-3.jpg", alt: "Barbier au travail", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-6.jpg", alt: "Miroirs et produits Reuzel", col: "", aspect: "aspect-square" },
+  { src: "/images/gallery-1.jpg", alt: "Salon BG Barbershop — vue d'ensemble", col: "col-span-2 md:col-span-2", aspect: "aspect-[4/3] md:aspect-video", pos: "object-[30%_center]" },
+  { src: "/images/gallery-9.jpg", alt: "L'équipe — deux barbiers", col: "", aspect: "aspect-square", pos: "object-top" },
+  { src: "/images/gallery-2.jpg", alt: "Coupe en cours", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-3.jpg", alt: "Barbier au travail", col: "", aspect: "aspect-square", pos: "object-top" },
+  { src: "/images/gallery-6.jpg", alt: "Miroirs et produits Reuzel", col: "", aspect: "aspect-square", pos: "object-center" },
   // Salle d'attente
-  { src: "/images/gallery-7.jpg", alt: "Salle d'attente — canapé Chesterfield", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-8.jpg", alt: "Salle d'attente — vue large", col: "col-span-2 md:col-span-1", aspect: "aspect-square" },
+  { src: "/images/gallery-7.jpg", alt: "Salle d'attente — canapé Chesterfield", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-8.jpg", alt: "Salle d'attente — vue large", col: "col-span-2 md:col-span-1", aspect: "aspect-square", pos: "object-center" },
   // Comptoir & boutique
-  { src: "/images/gallery-10.jpg", alt: "Réception et boutique", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-11.jpg", alt: "Espace lavage et merch BG", col: "", aspect: "aspect-square" },
+  { src: "/images/gallery-10.jpg", alt: "Réception et boutique", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-11.jpg", alt: "Espace lavage et merch BG", col: "", aspect: "aspect-square", pos: "object-center" },
   // Extérieur
-  { src: "/images/gallery-4.jpg", alt: "Façade BG Barbershop — jour", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-5.jpg", alt: "Façade BG Barbershop — soir", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-12.jpg", alt: "Salon — autre ambiance", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-13.jpg", alt: "Barbier et client", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-14.jpg", alt: "Enseigne BG Barbershop", col: "col-span-2 md:col-span-1", aspect: "aspect-square" },
+  { src: "/images/gallery-4.jpg", alt: "Façade BG Barbershop — jour", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-5.jpg", alt: "Façade BG Barbershop — soir", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-12.jpg", alt: "Salon — autre ambiance", col: "", aspect: "aspect-square", pos: "object-[30%_center]" },
+  { src: "/images/gallery-13.jpg", alt: "Barbier et client", col: "", aspect: "aspect-square", pos: "object-top" },
+  { src: "/images/gallery-14.jpg", alt: "Enseigne BG Barbershop", col: "col-span-2 md:col-span-1", aspect: "aspect-square", pos: "object-center" },
 ];
 
 export default function GaleriePage() {
@@ -50,7 +50,7 @@ export default function GaleriePage() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  className={`object-cover ${photo.pos} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={i < 3}
                 />

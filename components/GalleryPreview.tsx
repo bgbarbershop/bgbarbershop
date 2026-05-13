@@ -3,12 +3,12 @@ import Link from "next/link";
 
 // 6 meilleures photos pour la preview — voir /galerie pour toutes
 const photos = [
-  { src: "/images/gallery-1.jpg", alt: "Salon BG Barbershop — vue d'ensemble", col: "col-span-2", aspect: "aspect-video" },
-  { src: "/images/gallery-9.jpg", alt: "L'équipe BG Barbershop", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-3.jpg", alt: "Barbier au travail", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-7.jpg", alt: "Salle d'attente", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-6.jpg", alt: "Produits et miroirs", col: "", aspect: "aspect-square" },
-  { src: "/images/gallery-4.jpg", alt: "Façade BG Barbershop", col: "", aspect: "aspect-square" },
+  { src: "/images/gallery-1.jpg", alt: "Salon BG Barbershop — vue d'ensemble", col: "col-span-2", aspect: "aspect-[4/3] md:aspect-video", pos: "object-[30%_center]" },
+  { src: "/images/gallery-9.jpg", alt: "L'équipe BG Barbershop", col: "", aspect: "aspect-square", pos: "object-top" },
+  { src: "/images/gallery-3.jpg", alt: "Barbier au travail", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-7.jpg", alt: "Salle d'attente", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-6.jpg", alt: "Produits et miroirs", col: "", aspect: "aspect-square", pos: "object-center" },
+  { src: "/images/gallery-4.jpg", alt: "Façade BG Barbershop", col: "", aspect: "aspect-square", pos: "object-center" },
 ];
 
 export default function GalleryPreview() {
@@ -40,7 +40,7 @@ export default function GalleryPreview() {
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                className={`object-cover ${photo.pos} grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500`}
                 sizes="(max-width: 768px) 100vw, 66vw"
                 priority={i === 0}
               />

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -29,16 +30,15 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span
-            className="text-2xl font-black tracking-widest text-blanc"
-            style={{ fontFamily: "var(--font-inter), sans-serif", letterSpacing: "0.15em" }}
-          >
-            BG<span className="text-or">.</span>
-          </span>
-          <span className="text-xs tracking-[0.3em] text-gris uppercase hidden sm:block">
-            Barbershop
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="BG Barbershop"
+            width={56}
+            height={56}
+            className="mix-blend-screen"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

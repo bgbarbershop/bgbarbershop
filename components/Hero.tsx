@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
@@ -11,28 +12,25 @@ export default function Hero() {
       />
 
       {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-noir/70 via-noir/50 to-noir" />
+      <div className="absolute inset-0 bg-gradient-to-b from-noir/90 via-noir/50 to-noir" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        {/* Logo */}
+        <div className="flex justify-center mb-4">
+          <Image
+            src="/images/logo.png"
+            alt="BG Barbershop"
+            width={160}
+            height={160}
+            priority
+            style={{ maskImage: "radial-gradient(ellipse 70% 70% at 50% 45%, black 55%, transparent 80%)" }}
+          />
+        </div>
+
         {/* Eyebrow */}
-        <p className="text-or text-xs tracking-[0.4em] uppercase mb-6">
+        <p className="text-or text-xs tracking-[0.4em] uppercase mb-4">
           Coiffeur & Barbier
-        </p>
-
-        {/* Title */}
-        <h1
-          className="text-7xl md:text-[9rem] leading-none tracking-widest text-blanc mb-6"
-          style={{ fontFamily: "var(--font-inter), sans-serif", fontWeight: 900, letterSpacing: "0.15em" }}
-        >
-          BG<span className="text-or">.</span>
-        </h1>
-
-        <p
-          className="text-2xl md:text-4xl tracking-[0.3em] uppercase text-gris-clair mb-8"
-          style={{ fontFamily: "var(--font-inter)", fontWeight: 300, letterSpacing: "0.4em" }}
-        >
-          Barbershop
         </p>
 
         {/* Tagline */}

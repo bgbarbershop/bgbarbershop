@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Clock, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -7,10 +8,13 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Brand */}
         <div>
-          <p className="text-2xl font-black tracking-widest mb-1">
-            BG<span className="text-or">.</span>
-          </p>
-          <p className="text-xs tracking-[0.3em] text-gris uppercase mb-5">Barbershop</p>
+          <Image
+            src="/images/logo.png"
+            alt="BG Barbershop"
+            width={80}
+            height={80}
+            className="mix-blend-screen mb-4"
+          />
           <p className="text-gris text-sm leading-relaxed max-w-xs">
             Un espace pensé pour l&apos;homme moderne. Coupe, barbe, rasage. Le tout avec soin.
           </p>

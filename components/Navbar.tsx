@@ -34,8 +34,8 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="BG Barbershop"
-            width={56}
-            height={56}
+            width={72}
+            height={72}
             className=""
             priority
           />

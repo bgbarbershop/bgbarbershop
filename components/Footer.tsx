@@ -11,8 +11,8 @@ export default function Footer() {
           <Image
             src="/images/logo.png"
             alt="BG Barbershop"
-            width={80}
-            height={80}
+            width={110}
+            height={110}
             className="mb-4"
           />
           <p className="text-gris text-sm leading-relaxed max-w-xs">

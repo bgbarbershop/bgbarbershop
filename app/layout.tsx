@@ -8,14 +8,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bgbarbershop.vercel.app"),
   title: "BG Barbershop — Coiffeur & Barbier",
   description:
     "BG Barbershop, votre salon de coiffure et barbier en France. Coupes, barbe, rasage à la lame. Réservez en ligne.",
   openGraph: {
-    title: "BG Barbershop",
-    description: "Coiffeur & Barbier. Prenez rendez-vous en ligne.",
+    title: "BG Barbershop — Coiffeur & Barbier",
+    description: "Coiffeur & Barbier à Beynes. Réservez en ligne.",
     locale: "fr_FR",
     type: "website",
+    images: [{ url: "/opengraph-image.png", width: 400, height: 400, alt: "BG Barbershop" }],
   },
 };
 

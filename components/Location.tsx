@@ -41,6 +41,7 @@ export default function Location() {
                 <p className="text-xs tracking-widest uppercase text-gris mb-1">Adresse</p>
                 <p className="text-blanc leading-relaxed">
                   Av. du Centre<br />
+                  Centre commercial du Val des 4 Pignons<br />
                   78650 Beynes, France
                 </p>
               </div>

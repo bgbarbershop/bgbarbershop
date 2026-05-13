@@ -62,6 +62,7 @@ export default function Footer() {
               <MapPin size={16} className="mt-0.5 shrink-0 text-or" />
               <span>
                 Av. du Centre<br />
+                Centre commercial du Val des 4 Pignons<br />
                 78650 Beynes, France
               </span>
             </li>

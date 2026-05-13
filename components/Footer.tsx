@@ -13,7 +13,7 @@ export default function Footer() {
             alt="BG Barbershop"
             width={80}
             height={80}
-            className="mix-blend-screen mb-4"
+            className="mb-4"
           />
           <p className="text-gris text-sm leading-relaxed max-w-xs">
             Un espace pensé pour l&apos;homme moderne. Coupe, barbe, rasage. Le tout avec soin.

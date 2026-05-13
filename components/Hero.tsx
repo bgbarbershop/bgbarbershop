@@ -24,7 +24,7 @@ export default function Hero() {
             width={160}
             height={160}
             priority
-            style={{ maskImage: "radial-gradient(ellipse 70% 70% at 50% 45%, black 55%, transparent 80%)" }}
+            className="drop-shadow-2xl"
           />
         </div>
 

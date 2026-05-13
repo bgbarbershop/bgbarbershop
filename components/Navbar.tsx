@@ -36,7 +36,7 @@ export default function Navbar() {
             alt="BG Barbershop"
             width={56}
             height={56}
-            className="mix-blend-screen"
+            className="drop-shadow-lg"
             priority
           />
         </Link>

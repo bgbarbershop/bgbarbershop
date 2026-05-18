@@ -1,4 +1,7 @@
+"use client";
+
 import { MapPin, Clock, Phone } from "lucide-react";
+import { useLead } from "./LeadContext";
 
 const hours = [
   { day: "Lundi", time: "Fermé" },
@@ -8,6 +11,7 @@ const hours = [
 ];
 
 export default function Location() {
+  const { openLead } = useLead();
   return (
     <section id="localisation" className="py-24 px-6 bg-surface">
       <div className="max-w-6xl mx-auto">
@@ -74,14 +78,12 @@ export default function Location() {
               </div>
             </div>
 
-            <a
-              href="https://www.planity.com/bg-barbershop-78650-beynes"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-center px-8 py-4 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
+            <button
+              onClick={openLead}
+              className="mt-2 w-full text-center px-8 py-4 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
             >
               Réserver en ligne
-            </a>
+            </button>
           </div>
         </div>
       </div>

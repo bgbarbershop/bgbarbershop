@@ -4,17 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { useLead } from "./LeadContext";
 
-const links = [
+const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#galerie", label: "Galerie" },
   { href: "/#localisation", label: "Localisation" },
-  { href: "https://www.planity.com/bg-barbershop-78650-beynes", label: "Réserver", cta: true, external: true },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openLead } = useLead();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -43,27 +44,21 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map((l) =>
-            l.cta ? (
-              <a
-                key={l.href}
-                href={l.href}
-                target={l.external ? "_blank" : undefined}
-                rel={l.external ? "noopener noreferrer" : undefined}
-                className="px-5 py-2 bg-or text-noir text-sm font-semibold tracking-widest uppercase hover:bg-or-clair transition-colors"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-sm tracking-widest uppercase text-gris-clair hover:text-or transition-colors"
-              >
-                {l.label}
-              </Link>
-            )
-          )}
+          {navLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-sm tracking-widest uppercase text-gris-clair hover:text-or transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <button
+            onClick={openLead}
+            className="px-5 py-2 bg-or text-noir text-sm font-semibold tracking-widest uppercase hover:bg-or-clair transition-colors"
+          >
+            Réserver
+          </button>
         </nav>
 
         {/* Mobile toggle */}
@@ -79,18 +74,22 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-noir border-t border-border px-6 py-6 flex flex-col gap-5">
-          {links.map((l) => (
+          {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`text-sm tracking-widest uppercase ${
-                l.cta ? "text-or font-semibold" : "text-gris-clair hover:text-or"
-              } transition-colors`}
+              className="text-sm tracking-widest uppercase text-gris-clair hover:text-or transition-colors"
             >
               {l.label}
             </Link>
           ))}
+          <button
+            onClick={() => { setOpen(false); openLead(); }}
+            className="text-sm tracking-widest uppercase text-or font-semibold text-left transition-colors"
+          >
+            Réserver
+          </button>
         </div>
       )}
     </header>

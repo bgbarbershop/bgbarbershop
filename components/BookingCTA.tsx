@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
+
 import { Scissors } from "lucide-react";
+import { useLead } from "./LeadContext";
 
 export default function BookingCTA() {
+  const { openLead } = useLead();
   return (
     <section className="py-24 px-6 bg-noir relative overflow-hidden">
       {/* Decorative line */}
@@ -20,14 +23,12 @@ export default function BookingCTA() {
           Réservez votre séance en quelques secondes. On s&apos;occupe du reste.
         </p>
 
-        <a
-          href="https://www.planity.com/bg-barbershop-78650-beynes"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={openLead}
           className="inline-block px-10 py-5 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
         >
           Réserver maintenant
-        </a>
+        </button>
       </div>
     </section>
   );

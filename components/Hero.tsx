@@ -1,8 +1,12 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useLead } from "./LeadContext";
 
 export default function Hero() {
+  const { openLead } = useLead();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image placeholder — remplacer par une vraie photo dans /public/images/hero.jpg */}
@@ -40,14 +44,12 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://www.planity.com/bg-barbershop-78650-beynes"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openLead}
             className="px-8 py-4 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
           >
             Réserver
-          </a>
+          </button>
           <Link
             href="/#services"
             className="px-8 py-4 border border-blanc/30 text-blanc text-sm tracking-[0.2em] uppercase hover:border-or hover:text-or transition-colors"

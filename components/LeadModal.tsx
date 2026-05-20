@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
-
-const PLANITY_URL = "https://www.planity.com/bg-barbershop-78650-beynes";
 
 interface Props {
   onClose: () => void;
@@ -12,6 +11,7 @@ interface Props {
 export default function LeadModal({ onClose }: Props) {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -22,8 +22,8 @@ export default function LeadModal({ onClose }: Props) {
     }
     setSubmitted(true);
     setTimeout(() => {
-      window.open(PLANITY_URL, "_blank");
       onClose();
+      router.push("/reservation");
     }, 800);
   }
 

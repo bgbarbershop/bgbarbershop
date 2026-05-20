@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
+import PlanityWidget from "./PlanityWidget";
 
 interface Props {
   onClose: () => void;
@@ -11,7 +11,6 @@ interface Props {
 export default function LeadModal({ onClose }: Props) {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
-  const router = useRouter();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,37 +20,44 @@ export default function LeadModal({ onClose }: Props) {
       });
     }
     setSubmitted(true);
-    setTimeout(() => {
-      onClose();
-      router.push("/reservation");
-    }, 800);
   }
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-6"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-noir/80 backdrop-blur-sm" />
 
-      {/* Modal */}
-      <div className="relative w-full max-w-md bg-surface border border-border p-8">
+      {/* Modal — s'élargit après soumission */}
+      <div
+        className={`relative bg-surface border border-border transition-all duration-300 w-full overflow-y-auto max-h-[90vh] ${
+          submitted ? "max-w-3xl" : "max-w-md"
+        }`}
+      >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gris hover:text-blanc transition-colors"
+          className="absolute top-4 right-4 text-gris hover:text-blanc transition-colors z-10"
           aria-label="Fermer"
         >
           <X size={20} />
         </button>
 
         {submitted ? (
-          <div className="text-center py-6">
-            <p className="text-or text-xs tracking-[0.3em] uppercase mb-3">Parfait</p>
-            <p className="text-blanc text-lg">Redirection en cours…</p>
+          /* Widget Planity */
+          <div className="p-0">
+            <div className="px-8 pt-8 pb-4">
+              <p className="text-or text-xs tracking-[0.4em] uppercase mb-1">Réservation</p>
+              <h2 className="text-2xl text-blanc">Choisissez votre créneau</h2>
+            </div>
+            <div className="bg-white">
+              <PlanityWidget />
+            </div>
           </div>
         ) : (
-          <>
+          /* Formulaire */
+          <div className="p-8">
             <p className="text-or text-xs tracking-[0.4em] uppercase mb-2">Réservation</p>
             <h2 className="text-2xl text-blanc mb-1">Avant de continuer</h2>
             <p className="text-gris text-sm mb-8 leading-relaxed">
@@ -108,7 +114,7 @@ export default function LeadModal({ onClose }: Props) {
                 Accéder à la réservation
               </button>
             </form>
-          </>
+          </div>
         )}
       </div>
     </div>

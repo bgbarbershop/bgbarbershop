@@ -24,16 +24,18 @@ export default function LeadModal({ onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-6"
+      className={`fixed inset-0 z-[100] flex items-center justify-center ${submitted ? "p-0 md:px-4 md:py-6" : "px-4 py-6"}`}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-noir/80 backdrop-blur-sm" />
 
-      {/* Modal — s'élargit après soumission */}
+      {/* Modal — plein écran sur mobile après soumission */}
       <div
-        className={`relative bg-surface border border-border transition-all duration-300 w-full overflow-y-auto max-h-[90vh] ${
-          submitted ? "max-w-3xl" : "max-w-md"
+        className={`relative bg-surface border border-border transition-all duration-300 w-full overflow-y-auto ${
+          submitted
+            ? "max-w-3xl h-full md:h-auto md:max-h-[90vh]"
+            : "max-w-md max-h-[90vh]"
         }`}
       >
         <button

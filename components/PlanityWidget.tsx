@@ -31,7 +31,7 @@ export default function PlanityWidget() {
   return (
     <div
       id="planity-container"
-      className="w-full min-h-[700px]"
+      className="w-full min-h-[500px] md:min-h-[700px]"
     />
   );
 }

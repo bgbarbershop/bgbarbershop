@@ -1,3 +1,7 @@
+"use client";
+
+import { useLead } from "./LeadContext";
+
 const categories = [
   {
     label: "Coupe",
@@ -26,6 +30,7 @@ const categories = [
 ];
 
 export default function Services() {
+  const { openLead } = useLead();
   return (
     <section id="services" className="py-24 px-6 bg-noir">
       <div className="max-w-6xl mx-auto">
@@ -69,14 +74,12 @@ export default function Services() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <a
-            href="https://www.planity.com/bg-barbershop-78650-beynes"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openLead}
             className="inline-block px-8 py-4 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
           >
             Prendre rendez-vous
-          </a>
+          </button>
         </div>
       </div>
     </section>

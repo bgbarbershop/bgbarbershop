@@ -32,6 +32,7 @@ export default function PlanityWidget() {
     <div
       id="planity-container"
       className="w-full min-h-[500px] md:min-h-[700px]"
+      style={{ color: "initial", fontFamily: "initial" }}
     />
   );
 }

@@ -42,7 +42,7 @@ export default function LeadModal({ onClose }: Props) {
         </div>
 
         {/* Widget Planity — prend tout l'espace restant */}
-        <div className="flex-1 bg-white">
+        <div className="flex-1 bg-white overflow-x-hidden w-full">
           <PlanityWidget />
         </div>
       </div>

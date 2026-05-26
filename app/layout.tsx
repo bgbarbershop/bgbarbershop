@@ -12,11 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bgbarbershop.com"),
   title: {
-    default: "BG Barbershop — Coiffeur & Barbier à Beynes (78)",
+    default: "BG Barbershop |Coiffeur & Barbier à Beynes (78)",
     template: "%s | BG Barbershop",
   },
   description:
-    "BG Barbershop à Beynes (78650) — coupe homme, taille de barbe et rasage à la lame. Réservation en ligne disponible. Centre commercial du Val des 4 Pignons.",
+    "BG Barbershop à Beynes (78650) |coupe homme, taille de barbe et rasage à la lame. Réservation en ligne disponible. Centre commercial du Val des 4 Pignons.",
   keywords: [
     "barbershop Beynes",
     "coiffeur homme Beynes",
@@ -39,17 +39,17 @@ export const metadata: Metadata = {
     canonical: "https://www.bgbarbershop.com",
   },
   openGraph: {
-    title: "BG Barbershop — Coiffeur & Barbier à Beynes (78)",
+    title: "BG Barbershop |Coiffeur & Barbier à Beynes (78)",
     description: "Coupe homme, barbe et rasage à la lame à Beynes. Réservez en ligne.",
     locale: "fr_FR",
     type: "website",
     url: "https://www.bgbarbershop.com",
     siteName: "BG Barbershop",
-    images: [{ url: "/opengraph-image.png", width: 400, height: 400, alt: "BG Barbershop — Coiffeur & Barbier à Beynes" }],
+    images: [{ url: "/opengraph-image.png", width: 400, height: 400, alt: "BG Barbershop |Coiffeur & Barbier à Beynes" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BG Barbershop — Coiffeur & Barbier à Beynes",
+    title: "BG Barbershop |Coiffeur & Barbier à Beynes",
     description: "Coupe homme, barbe et rasage à la lame à Beynes (78). Réservez en ligne.",
     images: ["/opengraph-image.png"],
   },

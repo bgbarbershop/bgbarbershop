@@ -8,7 +8,7 @@ export default function PlanityWidget() {
     (window as any).planity = {
       key: "-O_2Cqy3QxjJ5aSPwMs3",
       primaryColor: "#C0C0C0",
-      container: container,
+      appointmentContainer: container,
     };
 
     const loadScript = (src: string, callback?: () => void) => {

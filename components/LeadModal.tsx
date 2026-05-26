@@ -25,7 +25,7 @@ export default function LeadModal({ onClose }: Props) {
   /* ── Après soumission : overlay plein écran pour le widget ── */
   if (submitted) {
     return (
-      <div className="fixed inset-0 z-[100] flex flex-col bg-surface">
+      <div className="fixed inset-0 z-[100] flex flex-col bg-surface overflow-hidden" style={{ width: "100vw", maxWidth: "100vw" }}>
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
           <div>

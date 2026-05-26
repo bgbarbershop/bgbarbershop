@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; overflow-x: hidden; }
+    #planity-container { width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="planity-container"></div>
+  <script>
+    var container = document.getElementById('planity-container');
+    window.planity = {
+      key: '-O_2Cqy3QxjJ5aSPwMs3',
+      primaryColor: '#C0C0C0',
+      appointmentContainer: container,
+    };
+  </script>
+  <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
+  <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
+  <script>
+    // Envia altura ao parent para o iframe se ajustar
+    function sendHeight() {
+      var h = document.body.scrollHeight;
+      window.parent.postMessage({ planityHeight: h }, '*');
+    }
+    setTimeout(sendHeight, 1000);
+    setTimeout(sendHeight, 2500);
+    new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true });
+  </script>
+</body>
+</html>

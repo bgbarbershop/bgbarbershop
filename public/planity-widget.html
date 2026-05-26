@@ -5,19 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      width: 100%;
-      overflow-x: hidden;
-    }
-    #planity-container {
-      width: 100%;
-      transform-origin: top left;
-    }
+    html, body { width: 100%; overflow-x: hidden; }
   </style>
+  <script>
+    // Aplica zoom assim que o body tem conteúdo mais largo que a viewport
+    function applyZoom() {
+      var contentW = document.documentElement.scrollWidth;
+      var viewportW = window.innerWidth;
+      if (contentW > viewportW && viewportW > 0) {
+        var z = viewportW / contentW;
+        document.body.style.zoom = z;
+        document.body.style.width = (contentW) + 'px';
+        window.parent.postMessage({ planityHeight: Math.ceil(document.body.scrollHeight * z) }, '*');
+      } else {
+        window.parent.postMessage({ planityHeight: document.body.scrollHeight }, '*');
+      }
+    }
+
+    // Observer — dispara sempre que o DOM muda (widget a renderizar)
+    var observer = new MutationObserver(function() {
+      clearTimeout(window._planityTimer);
+      window._planityTimer = setTimeout(applyZoom, 300);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+
+    // Fallbacks
+    window.addEventListener('load', function() {
+      setTimeout(applyZoom, 500);
+      setTimeout(applyZoom, 2000);
+      setTimeout(applyZoom, 5000);
+    });
+    window.addEventListener('resize', applyZoom);
+  </script>
 </head>
 <body>
   <div id="planity-container"></div>
-
   <script>
     var container = document.getElementById('planity-container');
     window.planity = {
@@ -28,32 +53,5 @@
   </script>
   <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
   <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
-
-  <script>
-    function fitWidget() {
-      var widget = document.getElementById('planitywl') || document.getElementById('planity') || container;
-      if (!widget) return;
-
-      var viewportW = window.innerWidth;
-      var widgetW = widget.scrollWidth;
-
-      if (widgetW > viewportW && viewportW > 0) {
-        var scale = viewportW / widgetW;
-        container.style.transform = 'scale(' + scale + ')';
-        container.style.transformOrigin = 'top left';
-        container.style.width = (widgetW) + 'px';
-        document.body.style.height = Math.ceil(widget.offsetHeight * scale) + 'px';
-      }
-
-      // Envia altura ao parent (iframe)
-      window.parent.postMessage({ planityHeight: document.body.scrollHeight }, '*');
-    }
-
-    setTimeout(fitWidget, 800);
-    setTimeout(fitWidget, 2000);
-    setTimeout(fitWidget, 4000);
-
-    window.addEventListener('resize', fitWidget);
-  </script>
 </body>
 </html>

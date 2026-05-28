@@ -6,14 +6,7 @@ const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min" 
-        <button 
-  className={service.name.includes("Premium") ? "btn-premium" : "btn-padrao"}
-  onClick={() => alert("Agendar: " + service.name)}
->
-  Réserver
-</button>
-        
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min"
       { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min" },
       { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min" },
       { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min" },

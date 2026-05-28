@@ -1,30 +1,31 @@
 "use client";
 
 import { useLead } from "./LeadContext";
+import { useState } from "react";
 
 const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min" },
-      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min" },
-      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min" },
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️" },
+      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️" },
+      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️" },
     ],
   },
   {
     label: "Barbe",
     services: [
-      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min" },
-      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min" },
+      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈" },
+      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈" },
     ],
   },
   {
     label: "Combos",
     services: [
-      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h" },
-      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min" },
-      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min" },
+      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐" },
+      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐" },
+      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑" },
     ],
   },
 ];
@@ -33,54 +34,97 @@ const PLANITY_URL = "https://www.planity.com/bg-barbershop-78650-beynes";
 
 export default function Services() {
   const { openLead } = useLead();
+  const [selectedService, setSelectedService] = useState(null);
+  const [hoveredService, setHoveredService] = useState(null);
 
-  const handleReservation = () => {
-    // Redireciona para Planity na mesma página (sem abrir outra aba)
+  const handleReservation = (serviceName) => {
+    // Redireciona para Planity na mesma página
     window.location.href = PLANITY_URL;
   };
 
   return (
-    <section id="services" className="py-24 px-6 bg-noir">
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className="py-32 px-6 bg-noir">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16">
-          <p className="text-or text-xs tracking-[0.4em] uppercase mb-3">Ce qu&apos;on fait</p>
-          <h2 className="text-5xl md:text-6xl text-blanc">Services & Tarifs</h2>
+        <div className="mb-20 text-center">
+          <p className="text-or text-xs tracking-[0.4em] uppercase mb-4 font-light">Excellence & Prestige</p>
+          <h2 className="text-6xl md:text-7xl text-blanc font-light mb-4">Services & Tarifs</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-or via-or to-transparent mx-auto"></div>
         </div>
 
         {/* Categories */}
-        <div className="flex flex-col gap-12">
+        <div className="space-y-20">
           {categories.map((cat) => (
             <div key={cat.label}>
-              {/* Category label */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-xs tracking-[0.4em] uppercase text-or">{cat.label}</span>
-                <div className="flex-1 h-px bg-border" />
+              {/* Category Header */}
+              <div className="flex items-center gap-6 mb-12">
+                <h3 className="text-2xl tracking-[0.3em] uppercase text-blanc font-light">{cat.label}</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-or/50 to-transparent" />
               </div>
 
-              {/* Services grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-                {cat.services.map((s) => (
+              {/* Services Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {cat.services.map((service) => (
                   <div
-                    key={s.name}
-                    className="bg-noir p-8 group hover:bg-surface transition-colors duration-200 flex flex-col"
+                    key={service.name}
+                    onMouseEnter={() => setHoveredService(service.name)}
+                    onMouseLeave={() => setHoveredService(null)}
+                    className="group relative"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-xl text-blanc group-hover:text-or transition-colors">
-                        {s.name}
-                      </h3>
-                      <span className="text-or text-xl font-bold ml-4 shrink-0">{s.price}</span>
+                    {/* Service Card */}
+                    <div className="relative bg-gradient-to-br from-surface to-noir border border-or/20 hover:border-or/60 transition-all duration-500 overflow-hidden h-full flex flex-col">
+                      
+                      {/* Animated Background Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-or/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                      {/* Content */}
+                      <div className="relative p-8 flex flex-col h-full">
+                        
+                        {/* Icon & Title */}
+                        <div className="mb-4">
+                          <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                            {service.icon}
+                          </div>
+                          <h4 className="text-xl text-blanc font-light mb-2 group-hover:text-or transition-colors duration-300">
+                            {service.name}
+                          </h4>
+                          <p className="text-or text-lg font-semibold">{service.price}</p>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-gris text-sm leading-relaxed mb-6 flex-grow">
+                          {service.description}
+                        </p>
+
+                        {/* Duration & Button */}
+                        <div className="space-y-4 mt-auto">
+                          <p className="text-xs tracking-widest text-gris/60 uppercase flex items-center">
+                            <span className="inline-block w-1 h-1 bg-or rounded-full mr-2"></span>
+                            {service.duration}
+                          </p>
+
+                          {/* Reservation Button */}
+                          <button
+                            onClick={() => handleReservation(service.name)}
+                            className="w-full group/btn relative py-3 px-6 overflow-hidden transition-all duration-500"
+                          >
+                            {/* Button Background */}
+                            <div className="absolute inset-0 bg-or transform group-hover/btn:scale-110 transition-transform duration-500 origin-center"></div>
+                            
+                            {/* Button Border Animation */}
+                            <div className="absolute inset-0 border border-or opacity-0 group-hover/btn:opacity-50 transition-opacity duration-300"></div>
+
+                            {/* Button Text */}
+                            <span className="relative text-noir text-xs font-bold tracking-[0.15em] uppercase">
+                              Réserver Maintenant
+                            </span>
+
+                            {/* Hover Effect Line */}
+                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-blanc group-hover/btn:w-full transition-all duration-500"></div>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-gris text-sm leading-relaxed mb-4">{s.description}</p>
-                    <p className="text-xs tracking-widest text-gris/60 uppercase mb-6 flex-grow">{s.duration}</p>
-                    
-                    {/* Botão de Reserva */}
-                    <button
-                      onClick={handleReservation}
-                      className="w-full px-4 py-2 bg-or text-noir text-xs font-bold tracking-[0.1em] uppercase hover:bg-or-clair transition-colors"
-                    >
-                      Réserver
-                    </button>
                   </div>
                 ))}
               </div>
@@ -88,16 +132,27 @@ export default function Services() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 text-center">
+        {/* CTA Section */}
+        <div className="mt-24 pt-16 border-t border-or/20 text-center">
+          <p className="text-gris text-sm mb-6 tracking-wide">Besoin de conseil avant de réserver?</p>
           <button
             onClick={openLead}
-            className="inline-block px-8 py-4 bg-or text-noir text-sm font-bold tracking-[0.2em] uppercase hover:bg-or-clair transition-colors"
+            className="group relative inline-block px-10 py-4 border-2 border-or hover:border-transparent transition-all duration-500"
           >
-            Prendre rendez-vous
+            {/* Background Fill on Hover */}
+            <div className="absolute inset-0 bg-or scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            
+            {/* Text */}
+            <span className="relative text-or group-hover:text-noir text-sm font-bold tracking-[0.2em] uppercase transition-colors duration-300">
+              Nous Contacter
+            </span>
           </button>
         </div>
       </div>
+
+      {/* Background Decoration */}
+      <div className="fixed -top-40 -right-40 w-80 h-80 bg-or/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="fixed -bottom-40 -left-40 w-80 h-80 bg-or/5 rounded-full blur-3xl pointer-events-none"></div>
     </section>
   );
 }

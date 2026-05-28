@@ -6,37 +6,37 @@ const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", planityServiceId: "service-coupe-premium" },
-      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", planityServiceId: "service-couronne" },
-      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", planityServiceId: "service-adolescent" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", planityServiceId: "service-enfant" },
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min" },
+      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min" },
+      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min" },
     ],
   },
   {
     label: "Barbe",
     services: [
-      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", planityServiceId: "service-barbe-express" },
-      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", planityServiceId: "service-barbe-premium" },
+      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min" },
+      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min" },
     ],
   },
   {
     label: "Combos",
     services: [
-      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", planityServiceId: "service-combo-express" },
-      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", planityServiceId: "service-combo-premium" },
-      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", planityServiceId: "service-bg-premium" },
+      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h" },
+      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min" },
+      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min" },
     ],
   },
 ];
 
-const PLANITY_BASE_URL = "https://www.planity.com/bg-barbershop-78650-beynes";
+const PLANITY_URL = "https://www.planity.com/bg-barbershop-78650-beynes";
 
 export default function Services() {
   const { openLead } = useLead();
 
-  const handleReservation = (planityServiceId) => {
-    // Redirige vers Planity sans ouvrir nouvelle aba
-    window.location.href = `${PLANITY_BASE_URL}`;
+  const handleReservation = () => {
+    // Redireciona para Planity na mesma página (sem abrir outra aba)
+    window.location.href = PLANITY_URL;
   };
 
   return (
@@ -63,7 +63,7 @@ export default function Services() {
                 {cat.services.map((s) => (
                   <div
                     key={s.name}
-                    className="bg-noir p-8 group hover:bg-surface transition-colors duration-200"
+                    className="bg-noir p-8 group hover:bg-surface transition-colors duration-200 flex flex-col"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <h3 className="text-xl text-blanc group-hover:text-or transition-colors">
@@ -72,11 +72,11 @@ export default function Services() {
                       <span className="text-or text-xl font-bold ml-4 shrink-0">{s.price}</span>
                     </div>
                     <p className="text-gris text-sm leading-relaxed mb-4">{s.description}</p>
-                    <p className="text-xs tracking-widest text-gris/60 uppercase mb-6">{s.duration}</p>
+                    <p className="text-xs tracking-widest text-gris/60 uppercase mb-6 flex-grow">{s.duration}</p>
                     
                     {/* Botão de Reserva */}
                     <button
-                      onClick={() => handleReservation(s.planityServiceId)}
+                      onClick={handleReservation}
                       className="w-full px-4 py-2 bg-or text-noir text-xs font-bold tracking-[0.1em] uppercase hover:bg-or-clair transition-colors"
                     >
                       Réserver

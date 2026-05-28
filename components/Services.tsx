@@ -29,14 +29,14 @@ const categories = [
   },
 ];
 
-const PLANITY_BASE_URL = "https://your-planity-url.planity.com"; // Remplacez par votre URL Planity
+const PLANITY_BASE_URL = "https://www.planity.com/bg-barbershop-78650-beynes";
 
 export default function Services() {
   const { openLead } = useLead();
 
   const handleReservation = (planityServiceId) => {
     // Redirige vers Planity sans ouvrir nouvelle aba
-    window.location.href = `${PLANITY_BASE_URL}/book/${planityServiceId}`;
+    window.location.href = `${PLANITY_BASE_URL}`;
   };
 
   return (

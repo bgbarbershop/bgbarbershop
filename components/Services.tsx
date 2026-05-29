@@ -31,12 +31,16 @@ const categories = [
 ];
 
 export default function Services() {
-  const { openLead } = useLead();
+  const { openLead } = useChumbo();
+
   const [selectedService, setSelectedService] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
 
-  const handleReservation = (service) => {
-    // Redireciona para o link Planity específico do serviço
+  type Service = {
+    planityUrl: string;
+  };
+
+  const handleReservation = (service: Service) => {
     window.location.href = service.planityUrl;
   };
 

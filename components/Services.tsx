@@ -114,7 +114,7 @@ export default function Services() {
 
                             {/* Button Text */}
                             <span className="relative text-noir text-xs font-bold tracking-[0.15em] uppercase">
-                              Réserver Maintenant
+                              Choisir
                             </span>
 
                             {/* Hover Effect Line */}

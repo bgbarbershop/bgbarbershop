@@ -7,41 +7,39 @@ const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️", serviceId: "coupe-premium" },
+      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️", serviceId: "couronne" },
+      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️", serviceId: "coupe-adolescent" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️", serviceId: "coupe-enfant" },
     ],
   },
   {
     label: "Barbe",
     services: [
-      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
+      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈", serviceId: "barbe-express" },
+      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈", serviceId: "barbe-premium" },
     ],
   },
   {
     label: "Combos",
     services: [
-      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
-      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑", planityUrl: "https://www.planity.com/bg-barbershop-78650-beynes/reservation" },
+      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐", serviceId: "combo-express" },
+      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐", serviceId: "combo-premium" },
+      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑", serviceId: "forfait-bg-premium" },
     ],
   },
 ];
 
+const PLANITY_BASE_URL = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
+
 export default function Services() {
   const { openLead } = useLead();
-
   const [selectedService, setSelectedService] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
 
-  type Service = {
-    planityUrl: string;
-  };
-
-  const handleReservation = (service: Service) => {
-    window.location.href = service.planityUrl;
+  const handleReservation = (serviceId) => {
+    // Redireciona para Planity com o serviço pré-selecionado
+    window.location.href = `${PLANITY_BASE_URL}?service=${serviceId}`;
   };
 
   return (
@@ -107,7 +105,7 @@ export default function Services() {
 
                           {/* Reservation Button */}
                           <button
-                            onClick={() => handleReservation(service)}
+                            onClick={() => handleReservation(service.serviceId)}
                             className="w-full group/btn relative py-3 px-6 overflow-hidden transition-all duration-500"
                           >
                             {/* Button Background */}

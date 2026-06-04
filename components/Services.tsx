@@ -31,7 +31,7 @@ const categories = [
 ];
 
 export default function Services() {
-  const { openLead } = useChumbo();
+  const { openLead } = useLead();
 
   const [selectedService, setSelectedService] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);

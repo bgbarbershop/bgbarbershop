@@ -10,7 +10,7 @@ const categories = [
       { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️" },
       { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️" },
       { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aos plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️" },
     ],
   },
   {
@@ -30,14 +30,12 @@ const categories = [
   },
 ];
 
-const PLANITY_RESERVATION_URL = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
-
 export default function Services() {
   const { openLead } = useLead();
   const [hoveredService, setHoveredService] = useState(null);
 
   const handleReservation = () => {
-    window.location.href = PLANITY_RESERVATION_URL;
+    window.location.href = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
   };
 
   return (

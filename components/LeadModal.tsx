@@ -14,11 +14,27 @@ export default function LeadModal({ onClose }: Props) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // Pixel Facebook Lead
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq("track", "Lead", {
         content_name: "Réservation BG Barbershop",
       });
     }
+
+    // Webhook Make
+    fetch("https://hook.us2.make.com/3m4w2a6kb4lv2kejn5whexkoxb0r9us8", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nom: form.name,
+        telephone: form.phone,
+        email: form.email,
+        source: "Formulaire réservation BG Barbershop",
+        date: new Date().toISOString(),
+      }),
+    }).catch(() => {}); // silencieux si erreur réseau
+
     setSubmitted(true);
   }
 

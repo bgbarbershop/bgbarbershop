@@ -37,7 +37,6 @@ export default function Services() {
   const [hoveredService, setHoveredService] = useState(null);
 
   const handleReservation = () => {
-    // Redireciona para Planity na mesma página
     window.location.href = PLANITY_RESERVATION_URL;
   };
 

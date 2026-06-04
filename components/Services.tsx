@@ -1,7 +1,6 @@
 "use client";
 
 import { useLead } from "./LeadContext";
-import { useState } from "react";
 
 const categories = [
   {
@@ -32,7 +31,6 @@ const categories = [
 
 export default function Services() {
   const { openLead } = useLead();
-  const [hoveredService, setHoveredService] = useState(null);
 
   const handleReservation = () => {
     window.location.href = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
@@ -61,12 +59,7 @@ export default function Services() {
               {/* Services Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {cat.services.map((service) => (
-                  <div
-                    key={service.name}
-                    onMouseEnter={() => setHoveredService(service.name)}
-                    onMouseLeave={() => setHoveredService(null)}
-                    className="group relative"
-                  >
+                  <div key={service.name} className="group relative">
                     {/* Service Card */}
                     <div className="relative bg-gradient-to-br from-surface to-noir border border-or/20 hover:border-or/60 transition-all duration-500 overflow-hidden h-full flex flex-col">
                       

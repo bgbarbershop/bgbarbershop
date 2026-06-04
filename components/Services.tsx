@@ -7,39 +7,38 @@ const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️", serviceId: "coupe-premium" },
-      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️", serviceId: "couronne" },
-      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️", serviceId: "coupe-adolescent" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️", serviceId: "coupe-enfant" },
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️" },
+      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️" },
+      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aux plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️" },
     ],
   },
   {
     label: "Barbe",
     services: [
-      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈", serviceId: "barbe-express" },
-      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈", serviceId: "barbe-premium" },
+      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈" },
+      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈" },
     ],
   },
   {
     label: "Combos",
     services: [
-      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐", serviceId: "combo-express" },
-      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐", serviceId: "combo-premium" },
-      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑", serviceId: "forfait-bg-premium" },
+      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐" },
+      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐" },
+      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑" },
     ],
   },
 ];
 
-const PLANITY_BASE_URL = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
+const PLANITY_RESERVATION_URL = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
 
 export default function Services() {
   const { openLead } = useLead();
-  const [selectedService, setSelectedService] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
 
-  const handleReservation = (serviceId) => {
-    // Redireciona para Planity com o serviço pré-selecionado
-    window.location.href = `${PLANITY_BASE_URL}?service=${serviceId}`;
+  const handleReservation = () => {
+    // Redireciona para Planity na mesma página
+    window.location.href = PLANITY_RESERVATION_URL;
   };
 
   return (
@@ -105,7 +104,7 @@ export default function Services() {
 
                           {/* Reservation Button */}
                           <button
-                            onClick={() => handleReservation(service.serviceId)}
+                            onClick={handleReservation}
                             className="w-full group/btn relative py-3 px-6 overflow-hidden transition-all duration-500"
                           >
                             {/* Button Background */}

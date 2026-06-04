@@ -6,25 +6,25 @@ const categories = [
   {
     label: "Coupe",
     services: [
-      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min", icon: "✂️" },
-      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min", icon: "✂️" },
-      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min", icon: "✂️" },
-      { name: "Coupe Enfant", description: "Coupe adaptée aos plus jeunes, avec soin et patience.", price: "20€", duration: "30 min", icon: "✂️" },
+      { name: "Coupe Premium", description: "Coupe sur mesure avec finitions soignées et styling.", price: "30€", duration: "45 min" },
+      { name: "Couronne", description: "Coupe dégradée précise, contours nets à la lame.", price: "20€", duration: "30 min" },
+      { name: "Coupe Adolescent", description: "Coupe premium pour les moins de 18 ans.", price: "25€", duration: "45 min" },
+      { name: "Coupe Enfant", description: "Coupe adaptée aos plus jeunes, avec soin et patience.", price: "20€", duration: "30 min" },
     ],
   },
   {
     label: "Barbe",
     services: [
-      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min", icon: "💈" },
-      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min", icon: "💈" },
+      { name: "Barbe Express", description: "Mise en forme rapide et nette de la barbe.", price: "18€", duration: "15 min" },
+      { name: "Barbe Premium", description: "Taille, mise en forme et finitions soignées de la barbe.", price: "25€", duration: "30 min" },
     ],
   },
   {
     label: "Combos",
     services: [
-      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h", icon: "⭐" },
-      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min", icon: "⭐" },
-      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min", icon: "👑" },
+      { name: "Combo Express", description: "Couronne + Barbe Express. Le duo complet, rapide et net.", price: "40€", duration: "1h" },
+      { name: "Combo Premium", description: "Coupe Premium + Barbe Premium. Le soin complet.", price: "50€", duration: "1h 15min" },
+      { name: "Forfait BG Premium", description: "L'expérience complète : coupe, barbe et soin visage.", price: "70€", duration: "1h 30min" },
     ],
   },
 ];
@@ -69,11 +69,8 @@ export default function Services() {
                       {/* Content */}
                       <div className="relative p-8 flex flex-col h-full">
                         
-                        {/* Icon & Title */}
+                        {/* Title */}
                         <div className="mb-4">
-                          <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                            {service.icon}
-                          </div>
                           <h4 className="text-xl text-blanc font-light mb-2 group-hover:text-or transition-colors duration-300">
                             {service.name}
                           </h4>

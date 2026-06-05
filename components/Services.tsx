@@ -33,7 +33,7 @@ export default function Services() {
   const { openLead } = useLead();
 
   const handleReservation = () => {
-    window.location.href = "https://www.planity.com/bg-barbershop-78650-beynes/reservation";
+    openLead();
   };
 
   return (

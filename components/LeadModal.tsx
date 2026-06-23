@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function LeadModal({ onClose }: Props) {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
+  const [form, setForm] = useState({ name: "", phone: "+33", email: "" });
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
